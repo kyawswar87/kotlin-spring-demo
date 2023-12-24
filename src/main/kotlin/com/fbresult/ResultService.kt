@@ -1,27 +1,30 @@
 package org.example.com.fbresult
 
+import kotlinx.coroutines.flow.Flow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ResultService(@Autowired private val resultRepository: ResultRepository) {
+class ResultService() {
 
-    fun insert(result: Result) {
-        if (resultRepository.findById(result.id).isPresent) {
+    @Autowired private lateinit var resultRepository: ResultRepository
+
+    suspend fun insert(result: Result) {
+        if (resultRepository.findById(result.id) != null) {
             throw IllegalArgumentException("The result is already exist.")
         }
         resultRepository.save(result)
     }
 
-    fun delete(resultId: String) {
+    suspend fun delete(resultId: String) {
         resultRepository.deleteById(resultId)
     }
 
-    fun findByTeamId(teamId: Team): List<Result> {
+    suspend fun findByTeamId(teamId: Team): List<Result> {
         return resultRepository.findByHomeTeamOrAwayTeam(teamId,teamId)
     }
 
-    fun findAll(): Iterable<Result> {
+    suspend fun findAll(): Flow<Result> {
         return resultRepository.findAll()
     }
 }

@@ -1,15 +1,14 @@
 package org.example.com.fbresult
 
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.OneToOne
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
 
-@Entity
-class Result(
+@Table("result")
+data class Result(
     @Id var id: String,
-    @OneToOne var homeTeam: Team,
-    @OneToOne var awayTeam: Team,
+    var homeTeam: String,
+    var awayTeam: String,
     var homeTeamGoals: Int,
     var awayTeamGoals: Int,
     var fixtureId: String,

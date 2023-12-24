@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS Result (
+     id BIGSERIAL PRIMARY KEY,
+     homeTeam VARCHAR NOT NULL,
+     awayTeam VARCHAR NOT NULL,
+     homeTeamGoals INTEGER NOT NULL,
+     awayTeamGoals INTEGER NOT NULL,
+     fixtureId VARCHAR NOT NULL,
+     fixtureName VARCHAR NOT NULL,
+     dateTime TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Team (
+     id BIGSERIAL PRIMARY KEY,
+     name VARCHAR NOT NULL,
+     logoURL VARCHAR NOT NULL,
+     leagueId VARCHAR NOT NULL,
+     leagueName VARCHAR NOT NULL
+);

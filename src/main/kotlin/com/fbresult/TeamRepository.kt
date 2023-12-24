@@ -1,5 +1,5 @@
 package org.example.com.fbresult
 
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
-interface TeamRepository: CrudRepository<Team, String>
+interface TeamRepository: CoroutineCrudRepository<Team, String>

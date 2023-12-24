@@ -1,9 +1,10 @@
 package org.example.com.fbresult
 
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Table
 
-@Entity
+
+@Table("Team")
 class Team(
     @Id var id: String,
     var name: String,

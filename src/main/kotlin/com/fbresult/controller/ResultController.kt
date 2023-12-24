@@ -14,11 +14,11 @@ class ResultController(
 ) {
 
     @GetMapping
-    fun getAllResult() = resultService.findAll()
+    suspend fun getAllResult() = resultService.findAll()
 
     @GetMapping("/{id}")
-    fun getResultByTeamId(@PathVariable teamId: String) = resultService.findByTeamId(Team(teamId))
+    suspend fun getResultByTeamId(@PathVariable teamId: String) = resultService.findByTeamId(Team(teamId))
 
     @PostMapping
-    fun createResult(@RequestBody result: Result) = resultService.insert(result)
+    suspend fun createResult(@RequestBody result: Result) = resultService.insert(result)
 }

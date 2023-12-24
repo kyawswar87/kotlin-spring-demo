@@ -18,12 +18,12 @@ class TeamController(
 ) {
 
     @GetMapping
-    fun getAllTeam() = teamService.findAll()
+    suspend fun getAllTeam() = teamService.findAll()
 
     @GetMapping("/{id}")
-    fun getTeamById(@PathVariable teamId: String) = teamService.findById(teamId)
+    suspend fun getTeamById(@PathVariable teamId: String) = teamService.findById(teamId)
 
     @PostMapping()
-    fun createTeam(team: Team) = teamService.insertTeam(team)
+    suspend fun createTeam(team: Team) = teamService.insertTeam(team)
 
 }
